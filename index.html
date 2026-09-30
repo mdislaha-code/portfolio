@@ -49,6 +49,19 @@ h3{font-size:1.1rem;margin-bottom:6px}
 footer{padding:44px 0 64px;border-top:2px solid var(--ink)}
 footer p{margin:0 0 6px}
 .small{color:var(--muted);font-size:.9rem;margin-top:28px}
+.grp{font-size:1.05rem;color:var(--muted);margin:30px 0 14px;font-family:"IBM Plex Sans",sans-serif;font-weight:600}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:22px}
+.book{display:block;text-decoration:none;color:var(--ink)}
+.book img{width:100%;height:auto;aspect-ratio:1/1.1;object-fit:contain;background:var(--tint);border:1px solid var(--rule);border-radius:4px;display:block}
+.book .bt{display:block;font-weight:600;font-size:.96rem;margin-top:8px;line-height:1.3}
+.book .bd{display:block;color:var(--muted);font-size:.86rem;line-height:1.4;margin-top:2px}
+.book:hover .bt{color:var(--green);text-decoration:underline}
+.book:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+.certrow{display:flex;gap:20px;align-items:center}.certrow img{width:96px;height:auto;flex:none}.certimg{display:block;width:100%;max-width:640px;height:auto;margin-top:22px;border:1px solid var(--rule);border-radius:4px}
+.sample{margin:0 0 30px}.sample img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}.sample figcaption{margin-top:8px;color:var(--muted);font-size:.93rem}
+.proj{margin:0 0 40px}.proj h3{margin-bottom:8px}.proj>p{margin:0 0 14px;max-width:66ch}.proj .tags{margin-bottom:18px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:20px}
+.shot{margin:0}.shot img{display:block;width:100%;height:auto;border:1px solid var(--rule);border-radius:4px;background:#fff}.shot figcaption{margin-top:6px;color:var(--muted);font-size:.9rem}
 @media (max-width:600px){.job{grid-template-columns:1fr}.ledger td:first-child{width:40%}header.hero{padding-top:48px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
@@ -62,12 +75,12 @@ footer p{margin:0 0 6px}
   <p class="lede">I keep the books for US-based companies from Khulna, Bangladesh. I reconcile accounts, set up charts of accounts, and post healthcare payments. I've worked in administration, procurement and retail management for nearly 20 years, so I'm comfortable with the day-to-day detail of running a business, not just the ledger.</p>
   <div class="actions">
     <a class="btn primary" href="mailto:mdislaha@gmail.com">Email me</a>
-    <a class="btn ghost" href="Md_Islahuddin_CV.pdf" download>Download CV</a>
+    <a class="btn ghost" href="Md_Islahuddin_CV.docx" download>Download CV</a>
   </div>
   <table class="ledger" aria-label="Summary">
     <tr><td>Software</td><td>QuickBooks Desktop and Online, TriZetto, Excel, Google Sheets</td></tr>
     <tr><td>Remote experience</td><td>US-based clients since 2019</td></tr>
-    <tr><td>Certification</td><td>QuickBooks Online Accountant, Intuit (September 2026)</td></tr>
+    <tr><td>Certification</td><td>QuickBooks Online Accountant, Intuit (14 September 2026)</td></tr>
     <tr><td>Availability</td><td>Full-time, part-time or contract. Flexible with US time zones.</td></tr>
   </table>
 </header>
@@ -159,6 +172,80 @@ footer p{margin:0 0 6px}
   </div>
 </section>
 
+<section id="samples">
+  <h2>Work samples</h2>
+  <p class="lede">Examples of how I lay out accounting and claims data in Excel. All names, numbers and accounts are sample data, not client records.</p>
+  <figure class="sample">
+    <a href="sample-bank-statement.png" target="_blank" rel="noopener"><img src="sample-bank-statement.png" alt="Sample bank statement in Excel with a deposit, nine check payments, and credit and debit totals" loading="lazy" width="1167" height="407"></a>
+    <figcaption><strong>Bank statement data</strong><br>Credits, check debits with references, and running totals in one sheet.</figcaption>
+  </figure>
+  <figure class="sample">
+    <a href="sample-claims-report.png" target="_blank" rel="noopener"><img src="sample-claims-report.png" alt="Sample medical claims tracking sheet in Excel showing claim status, charges, and allowed amounts for eight claims" loading="lazy" width="1782" height="280"></a>
+    <figcaption><strong>Claims tracking report</strong><br>Status counts at the top, then charges and allowed amounts for each claim. Tap the image to enlarge.</figcaption>
+  </figure>
+</section>
+
+<section id="automation">
+  <h2>Automation projects (n8n)</h2>
+  <p class="lede">Workflows I built while learning n8n. I add new ones here as I finish them.</p>
+
+  <article class="proj">
+    <h3>Daily weather report by email</h3>
+    <p>A scheduled workflow that pulls the weather for Khulna and Rajshahi from the OpenWeather API, combines the two results, formats them with a short JavaScript step, and emails a daily report.</p>
+    <ul class="tags"><li>Schedule Trigger</li><li>HTTP Request</li><li>Merge</li><li>JavaScript</li><li>Email</li></ul>
+    <div class="shots">
+      <figure class="shot"><a href="n8n-weather-workflow.jpg" target="_blank" rel="noopener"><img src="n8n-weather-workflow.jpg" alt="n8n workflow: schedule trigger, two weather requests, merge, JavaScript code, send email" loading="lazy"></a><figcaption>The workflow</figcaption></figure>
+      <figure class="shot"><a href="n8n-weather-email.jpg" target="_blank" rel="noopener"><img src="n8n-weather-email.jpg" alt="Gmail inbox showing the automated Daily Weather Report for Khulna and Rajshahi" loading="lazy"></a><figcaption>The email it sends</figcaption></figure>
+    </div>
+  </article>
+
+  <article class="proj">
+    <h3>AI assistant with Google Sheets and Drive</h3>
+    <p>A chat assistant built on an n8n AI Agent. It uses Google Gemini as the model, keeps conversation memory in Postgres, and has tools to read and add rows in Google Sheets and to search Google Drive.</p>
+    <ul class="tags"><li>AI Agent</li><li>Google Gemini</li><li>Postgres memory</li><li>Google Sheets</li><li>Google Drive</li></ul>
+    <div class="shots">
+      <figure class="shot"><a href="n8n-agent.jpg" target="_blank" rel="noopener"><img src="n8n-agent.jpg" alt="n8n AI Agent workflow with Gemini model, Postgres memory, and Google Sheets and Drive tools" loading="lazy"></a><figcaption>The workflow</figcaption></figure>
+    </div>
+  </article>
+
+  <!-- NEW WORKFLOW TEMPLATE: copy this block, paste it above this line, and fill it in.
+  <article class="proj">
+    <h3>Workflow name</h3>
+    <p>What it does in two sentences.</p>
+    <ul class="tags"><li>Tool one</li><li>Tool two</li></ul>
+    <div class="shots">
+      <figure class="shot"><a href="FILE.jpg" target="_blank" rel="noopener"><img src="FILE.jpg" alt="Describe the screenshot" loading="lazy"></a><figcaption>The workflow</figcaption></figure>
+    </div>
+  </article>
+  -->
+</section>
+
+<section id="books">
+  <h2>Books on Amazon</h2>
+  <p class="lede">I publish low-content and children's books on Amazon KDP under the imprint Amber Vision. I handle concept, design coordination, formatting, and publishing myself.</p>
+  <h3 class="grp">Kids: Arabic and Islamic learning</h3>
+  <div class="books">
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-01.jpg" alt="Cover of My First Arabic Workbook" loading="lazy" width="260" height="260"><span class="bt">My First Arabic Workbook</span><span class="bd">Arabic letters, numbers, tracing and activities. Ages 3 to 5.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-02.jpg" alt="Cover of Arabic Animals Workbook" loading="lazy" width="260" height="260"><span class="bt">Arabic Animals Workbook</span><span class="bd">Animal names in Arabic with tracing and coloring. Ages 3 to 5.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-03.jpg" alt="Cover of Makkah and Madinah Coloring and Activity Book" loading="lazy" width="260" height="260"><span class="bt">Makkah &amp; Madinah Coloring &amp; Activity Book</span><span class="bd">Coloring and activities for Muslim kids. Ages 4 to 8.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-04.jpg" alt="Cover of দাদুর মহান ফেরেশতাদের গল্প" loading="lazy" width="260" height="260"><span class="bt">দাদুর মহান ফেরেশতাদের গল্প</span><span class="bd">Bangla story about four special angels. Ages 4 to 10.</span></a>
+  </div>
+  <h3 class="grp">Kids: Bangladesh</h3>
+  <div class="books">
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-05.jpg" alt="Cover of Color and Discover Bangladesh" loading="lazy" width="260" height="260"><span class="bt">Color and Discover Bangladesh</span><span class="bd">Coloring adventure through Bangladesh's nature and culture. Ages 4 to 8.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-06.jpg" alt="Cover of Colors of Bangladesh" loading="lazy" width="260" height="260"><span class="bt">Colors of Bangladesh</span><span class="bd">Bold and easy coloring book for calm and inner peace.</span></a>
+  </div>
+  <h3 class="grp">Adult coloring and journal</h3>
+  <div class="books">
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-07.jpg" alt="Cover of Calm Within" loading="lazy" width="260" height="260"><span class="bt">Calm Within</span><span class="bd">An anxiety relief coloring book.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-08.jpg" alt="Cover of Calm and Easy" loading="lazy" width="260" height="260"><span class="bt">Calm &amp; Easy</span><span class="bd">Bold and easy coloring for anxiety relief and stress reduction.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-09.jpg" alt="Cover of Cozy and Easy" loading="lazy" width="260" height="260"><span class="bt">Cozy &amp; Easy</span><span class="bd">Bold and easy cottagecore coloring book.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-10.jpg" alt="Cover of Petals and Wings" loading="lazy" width="260" height="260"><span class="bt">Petals &amp; Wings</span><span class="bd">Butterfly and flower coloring book, 24 pages.</span></a>
+    <a class="book" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener"><img src="book-11.jpg" alt="Cover of Muslim Mom Self-Care Journal" loading="lazy" width="260" height="260"><span class="bt">Muslim Mom Self-Care Journal</span><span class="bd">30 days of faith, calm and renewal.</span></a>
+  </div>
+  <p><a class="btn ghost" href="https://www.amazon.com/stores/author/B0H6VGV93R/allbooks" target="_blank" rel="noopener">See all books on Amazon</a></p>
+</section>
+
 <section id="skills">
   <h2>Skills and tools</h2>
   <ul class="tags">
@@ -170,7 +257,11 @@ footer p{margin:0 0 6px}
 
 <section id="certification">
   <h2>Certification</h2>
-  <div class="cert"><strong>QuickBooks Online Accountant Certification</strong><br>Intuit, September 2026</div>
+  <div class="cert certrow">
+    <img src="qb-badge.png" alt="Intuit QuickBooks Online Certified ProAdvisor badge" width="130" height="146">
+    <div><strong>QuickBooks Online Accountant Certification</strong><br>Intuit, passed the exam on 14 September 2026<br><a href="certificate.jpg" target="_blank" rel="noopener">View certificate</a></div>
+  </div>
+  <a href="certificate.jpg" target="_blank" rel="noopener"><img class="certimg" src="certificate.jpg" alt="Intuit certificate of completion for Md Islahuddin, QuickBooks Online Accountant Certification, dated 14 September 2026" loading="lazy" width="1100" height="850"></a>
 </section>
 
 <footer id="contact">
